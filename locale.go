@@ -107,8 +107,8 @@ func main() {
 	paths := dirs()
 	if len(paths) == 0 {
 		fmt.Println("请指定扫描目录，支持以下两种用法：")
-		fmt.Println("\t1. kuu_locale dir1 dir2 ...")
-		fmt.Println("\t2. DIRS=dir1,dir2 kuu_locale")
+		fmt.Println("\t1. kuu-locale dir1 dir2 ...")
+		fmt.Println("\t2. DIRS=dir1,dir2 kuu-locale")
 		return
 	}
 

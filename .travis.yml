@@ -4,9 +4,9 @@ go:
 sudo: required
 install: true
 after_success:
-  - GOARCH="amd64" GOOS="linux" CGO_ENABLED="0" go build -a -o kuu_locale
+  - GOARCH="amd64" GOOS="linux" CGO_ENABLED="0" go build -a -o kuu-locale
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-  - export REPO=$DOCKER_USER/kuu_locale
+  - export REPO=$DOCKER_USER/kuu-locale
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_TAG ; fi`
   - echo $REPO:$TAG
   - docker build -f Dockerfile -t $REPO:$TAG .

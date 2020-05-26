@@ -3,11 +3,11 @@
 project_name: kuu-locale
 before:
   hooks:
-    # you may remove this if you don't use vgo
-#    - go get
+    - go mod download
 builds:
 - env:
-  - CGO_ENABLED=0
+    - CGO_ENABLED=0
+    - GO111MODULE=on
   goos:
     - darwin
     - linux

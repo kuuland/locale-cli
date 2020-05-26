@@ -2,6 +2,8 @@ language: go
 go:
   - 1.x
 sudo: required
+env:
+  - GO111MODULE=on
 install: true
 after_success:
   - GOARCH="amd64" GOOS="linux" CGO_ENABLED="0" go build -a -o kuu-locale

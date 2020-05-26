@@ -1,0 +1,32 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - freebsd
+      - windows
+archive:
+  replacements:
+    amd64: 64-bit
+    386: 32-bit
+    darwin: macOS
+    linux: linux
+    windows: windows
+  format_overrides:
+    - goos: windows
+      format: zip
+  files:
+    - none*
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

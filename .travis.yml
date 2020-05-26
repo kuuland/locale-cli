@@ -1,0 +1,24 @@
+language: go
+go:
+  - 1.x
+sudo: required
+install: true
+after_success:
+  - GOARCH="amd64" GOOS="linux" CGO_ENABLED="0" go build -a -o kuu_locale
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  - export REPO=$DOCKER_USER/kuu_locale
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_TAG ; fi`
+  - echo $REPO:$TAG
+  - docker build -f Dockerfile -t $REPO:$TAG .
+  - docker push $REPO
+
+deploy:
+  - provider: script
+    skip_cleanup: false
+    script: curl -sL https://git.io/goreleaser | bash
+    on:
+      tags: true
+      condition: $TRAVIS_OS_NAME = linux
+
+services:
+  - docker

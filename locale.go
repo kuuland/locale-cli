@@ -150,10 +150,10 @@ func main() {
 	}
 
 	sort.Strings(entries)
-	csvBuf.WriteString("国际化键,English,简体中文,繁體中文\n")
+	csvBuf.WriteString("国际化键,用途描述,English,简体中文,繁體中文\n")
 	for _, entry := range entries {
 		value := existsKey[entry]
-		csvBuf.WriteString(fmt.Sprintf("%s,%s,%s,%s\n", entry, value, value, value))
+		csvBuf.WriteString(fmt.Sprintf("%s,%s,%s,%s,%s\n", entry, "", value, value, value))
 	}
 	totalCost := fmt.Sprintf("总耗时：%v\n", time.Since(startTime))
 	totalFilesCount := fmt.Sprintf("扫描文件数：%d\n", len(totalFileKeys))

@@ -1,6 +1,6 @@
 # kuu-locale
 
-[![Build Status](https://travis-ci.org/kuuland/locale_cli.svg?branch=master)](https://travis-ci.org/kuuland/locale_cli)
+[![Build Status](https://travis-ci.org/kuuland/locale-cli.svg?branch=master)](https://travis-ci.org/kuuland/locale-cli)
 
 ## Usage 
 
